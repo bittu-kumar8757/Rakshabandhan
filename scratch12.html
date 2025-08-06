@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scratch Card ₹250</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ffb3d9, #ff80c0);
+    }
+
+    h1 {
+      color: white;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .scratch-box {
+      width: 320px;
+      height: 200px;
+      border-radius: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+      position: relative;
+      overflow: hidden;
+      background: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Prize Layer */
+    .prize {
+      font-size: 40px;
+      color: blue;
+      position: absolute;
+      z-index: 1;
+      font-weight: bold;
+    }
+
+    /* Canvas Scratch Layer */
+    #scratchCard {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎉 Congratulations! You Win 🎉</h1>
+
+  <div class="scratch-box">
+    <div class="prize"> Under ₹150</div>
+    <canvas id="scratchCard" width="320" height="200"></canvas>
+  </div>
+
+  <script>
+    const canvas = document.getElementById("scratchCard");
+    const ctx = canvas.getContext("2d");
+
+    // Gray Layer
+    ctx.fillStyle = "gray";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    let scratching = false;
+
+    // Mouse Events
+    canvas.addEventListener("mousedown", () => scratching = true);
+    canvas.addEventListener("mouseup", () => scratching = false);
+    canvas.addEventListener("mousemove", scratch);
+
+    // Touch Events
+    canvas.addEventListener("touchstart", () => scratching = true);
+    canvas.addEventListener("touchend", () => scratching = false);
+    canvas.addEventListener("touchmove", scratchTouch);
+
+    function scratch(e){
+      if(!scratching) return;
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      erase(x, y);
+    }
+
+    function scratchTouch(e){
+      if(!scratching) return;
+      const rect = canvas.getBoundingClientRect();
+      const touch = e.touches[0];
+      const x = touch.clientX - rect.left;
+      const y = touch.clientY - rect.top;
+      erase(x, y);
+    }
+
+    function erase(x, y){
+      ctx.globalCompositeOperation = "destination-out";
+      ctx.beginPath();
+      ctx.arc(x, y, 25, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  </script>
+</body>
+</html>

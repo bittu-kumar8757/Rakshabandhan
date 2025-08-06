@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Raksha Bandhan</title>
+  <!-- Google Fonts for Cursive Heading -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Poppins", sans-serif;
+      background-color: black;
+    }
+
+    main {
+      width: 500px;
+      background-color: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(27, 209, 200, 0.7);
+      text-align: center;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .heading{
+      text-align: center;
+    }
+
+    .box h2 {
+      font-family: 'Great Vibes', cursive;
+      font-weight: 700;
+      font-size: 50px;
+      background: linear-gradient(to right, #E30B5C, #ff9a8b);
+      -webkit-background-clip: text;
+      color: transparent;
+      margin: 0;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #ff6f61; }
+      to { text-shadow: 0 0 20px #ff9a8b; }
+    }
+
+    .box p {
+      font-size: 18px;
+      color: #555;
+      margin: 20px 0;
+      line-height: 1.5;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 30px;
+      font-size: 18px;
+      background: linear-gradient(to right, #E30B5C, #ff9a8b);
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 15px;
+    }
+
+    .button a{
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+    }
+
+    .button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px #E30B5C;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <div class="box">
+      <div class="heading">
+        <h2>Happy Raksha</h2>
+        <h2>Bandhan</h2>
+      </div>
+
+      <p>
+        Celebrating the purest bond of love, care, and protection.  
+        Raksha Bandhan is a beautiful reminder of the lifelong promise between a brother and sister,  
+        a thread that ties hearts together forever.
+      </p>
+
+      <div class="button"><a href="gift.html">Let's Celebrate 🎉</a></div>
+    </div>
+  </main>
+</body>
+</html>
